@@ -283,7 +283,13 @@
 .gallery__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: dense;
   gap: 1rem;
+}
+
+/* Fotos horizontales: ocupan dos columnas con la misma altura de fila */
+.gallery__item--wide {
+  grid-column: span 2;
 }
 
 .gallery__item {
@@ -308,14 +314,21 @@
   position: relative;
   display: block;
   width: 100%;
+  height: 100%;
   cursor: zoom-in;
 }
 
+/* Las fotos reales son verticales (celular): miniaturas 3:4 */
 .gallery__open img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: 100%;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   transition: transform .6s ease;
+}
+
+.gallery__item--wide .gallery__open img {
+  aspect-ratio: 3 / 2;
 }
 
 .gallery__open::after {
@@ -1103,7 +1116,8 @@
   }
 
   .gallery__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .6rem;
   }
 
   .process__steps {

@@ -1,0 +1,7 @@
+# Originales de WhatsApp (el sitio usa las versiones optimizadas de assets/img/proyectos)
+assets/resources/
+
+# Sistema
+.DS_Store
+Thumbs.db
+.vercel
