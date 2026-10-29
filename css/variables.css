@@ -1,0 +1,70 @@
+/* ==========================================================================
+   E-Balogist Carpintería — Design tokens
+   ========================================================================== */
+:root {
+  /* Colors */
+  --color-wood-dark: #3b2a1e;
+  --color-wood: #6b4a2f;
+  --color-accent: #b5722f;
+  --color-accent-dark: #93591f;
+  --color-accent-light: #e6a964;
+  --color-cream: #f7f1e8;
+  --color-paper: #fffdf9;
+  --color-sand: #e9dfd0;
+  --color-text: #2b2420;
+  --color-muted: #6e625a;
+  --color-white: #fff;
+  --color-error: #b3261e;
+  --color-success: #2f6b3a;
+  --color-border: #d9cdbb;
+
+  /* Typography */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --fs-base: 1.0625rem;
+  --fs-sm: .9375rem;
+  --fs-xs: .8125rem;
+  --fs-h1: clamp(2.4rem, 5.5vw + .5rem, 4.4rem);
+  --fs-h2: clamp(1.9rem, 3vw + .6rem, 2.9rem);
+  --fs-h3: 1.3rem;
+  --lh-body: 1.7;
+  --lh-heading: 1.18;
+
+  /* Shape & depth */
+  --radius: 6px;
+  --radius-lg: 12px;
+  --shadow: 0 10px 30px rgba(59, 42, 30, .12);
+  --shadow-sm: 0 4px 14px rgba(59, 42, 30, .08);
+  --shadow-lg: 0 20px 44px rgba(59, 42, 30, .2);
+
+  /* Layout */
+  --container: 1180px;
+  --gutter: 1.5rem;
+  --header-h: 76px;
+  --section-pad: clamp(4rem, 8vw, 7rem);
+
+  /* Motion */
+  --transition: .3s ease;
+
+  /* Texture: faint wood grain for dark sections */
+  --wood-grain:
+    repeating-linear-gradient(
+      100deg,
+      rgba(255, 255, 255, .018) 0 2px,
+      transparent 2px 9px,
+      rgba(0, 0, 0, .035) 9px 11px,
+      transparent 11px 23px
+    ),
+    repeating-linear-gradient(
+      94deg,
+      rgba(255, 255, 255, .012) 0 1px,
+      transparent 1px 41px
+    );
+}
+
+@media (max-width: 480px) {
+  :root {
+    --gutter: 1.125rem;
+    --header-h: 68px;
+  }
+}
