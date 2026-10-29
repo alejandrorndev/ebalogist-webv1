@@ -58,7 +58,7 @@ Luego abre <http://localhost:8080>.
 
 ## Pendientes antes de publicar
 
-- [x] Número de WhatsApp real (`+57 300 789 4561`).
+- [x] Número de WhatsApp real (`+57 312 637 8236`).
 - [ ] Confirmar el correo de contacto (`hola@ebalogistcarpinteria.com`).
 - [x] Usar fotos de proyectos propios en la galería y en "Sobre nosotros".
 - [ ] Cambiar la foto de portada (Unsplash) por una propia.
