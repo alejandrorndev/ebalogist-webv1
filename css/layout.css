@@ -421,6 +421,40 @@ body.nav-open .nav-toggle__bar:nth-child(3) {
   height: 20px;
 }
 
+/* ---------- WhatsApp flotante (el botón de volver arriba queda encima) ---------- */
+.whatsapp-float {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 810;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 56px;
+  padding: 0 1.25rem 0 1rem;
+  border-radius: 999px;
+  background: #25d366;
+  color: var(--color-white) !important;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+  transition: transform var(--transition), background-color var(--transition);
+}
+
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
+  background: #1ebe5b;
+  transform: translateY(-2px);
+}
+
+.whatsapp-float svg {
+  flex-shrink: 0;
+}
+
+.back-to-top {
+  bottom: calc(1.25rem + 56px + .75rem);
+  right: calc(1.25rem + 4px);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   .footer__grid {
@@ -452,5 +486,25 @@ body.nav-open .nav-toggle__bar:nth-child(3) {
   .footer__bottom {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* En celular el botón de WhatsApp queda como círculo, solo el ícono */
+  .whatsapp-float {
+    width: 56px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .whatsapp-float__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .back-to-top {
+    right: calc(1.25rem + 4px);
   }
 }
