@@ -60,7 +60,8 @@ Luego abre <http://localhost:8080>.
 
 - [ ] Reemplazar el número de WhatsApp de ejemplo (`+57 300 000 0000`) por el real.
 - [ ] Confirmar el correo de contacto (`hola@ebalogistcarpinteria.com`).
-- [ ] Cambiar las fotos de Unsplash por fotos de proyectos propios.
+- [x] Usar fotos de proyectos propios en la galería y en "Sobre nosotros".
+- [ ] Cambiar la foto de portada (Unsplash) por una propia.
 - [ ] Reemplazar las reseñas de ejemplo por testimonios reales.
 - [ ] Conectar el formulario a un servicio de envío (por ejemplo Formspree, EmailJS o un backend propio); hoy solo valida y simula el envío.
 
