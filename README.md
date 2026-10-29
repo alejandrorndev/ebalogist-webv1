@@ -58,7 +58,7 @@ Luego abre <http://localhost:8080>.
 
 ## Pendientes antes de publicar
 
-- [ ] Reemplazar el número de WhatsApp de ejemplo (`+57 300 000 0000`) por el real.
+- [x] Número de WhatsApp real (`+57 300 789 4561`).
 - [ ] Confirmar el correo de contacto (`hola@ebalogistcarpinteria.com`).
 - [x] Usar fotos de proyectos propios en la galería y en "Sobre nosotros".
 - [ ] Cambiar la foto de portada (Unsplash) por una propia.
