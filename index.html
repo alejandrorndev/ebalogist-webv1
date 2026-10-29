@@ -546,11 +546,17 @@
           </ul>
         </div>
 
-        <form class="quote-form reveal" id="quote-form" action="#" method="post" novalidate aria-label="Formulario de solicitud de cotización">
+        <form class="quote-form reveal" id="quote-form" action="https://api.web3forms.com/submit" method="post" novalidate aria-label="Formulario de solicitud de cotización">
+          <input type="hidden" name="access_key" value="39024bb2-cae3-4cfc-8517-cad7a1edfeff">
+          <input type="hidden" name="subject" value="Nueva solicitud de cotización desde la web">
+          <input type="hidden" name="from_name" value="Web E-Balogist Carpintería">
+          <!-- Campo trampa contra spam: las personas no lo ven, los bots lo llenan -->
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+
           <div class="form-row">
             <div class="form-field">
               <label for="qf-name">Nombre completo <span aria-hidden="true">*</span></label>
-              <input id="qf-name" name="name" type="text" autocomplete="name" placeholder="Ej. Laura Gómez" required aria-describedby="qf-name-error">
+              <input id="qf-name" name="Nombre" type="text" autocomplete="name" placeholder="Ej. Laura Gómez" required aria-describedby="qf-name-error">
               <span class="form-error" id="qf-name-error" aria-live="polite"></span>
             </div>
             <div class="form-field">
@@ -563,12 +569,12 @@
           <div class="form-row">
             <div class="form-field">
               <label for="qf-phone">Celular / WhatsApp</label>
-              <input id="qf-phone" name="phone" type="tel" autocomplete="tel" placeholder="300 123 4567" aria-describedby="qf-phone-error">
+              <input id="qf-phone" name="Celular" type="tel" autocomplete="tel" placeholder="300 123 4567" aria-describedby="qf-phone-error">
               <span class="form-error" id="qf-phone-error" aria-live="polite"></span>
             </div>
             <div class="form-field">
               <label for="qf-service">Servicio <span aria-hidden="true">*</span></label>
-              <select id="qf-service" name="service" required aria-describedby="qf-service-error">
+              <select id="qf-service" name="Servicio" required aria-describedby="qf-service-error">
                 <option value="">Selecciona un servicio</option>
                 <option value="Cocinas integrales">Cocinas integrales</option>
                 <option value="Closets y muebles empotrados">Closets y muebles empotrados</option>
@@ -585,7 +591,7 @@
           <div class="form-row">
             <div class="form-field">
               <label for="qf-timeline">¿Cuándo te gustaría empezar?</label>
-              <select id="qf-timeline" name="timeline" aria-describedby="qf-timeline-error">
+              <select id="qf-timeline" name="Plazo" aria-describedby="qf-timeline-error">
                 <option value="">Selecciona un plazo</option>
                 <option value="Lo antes posible">Lo antes posible</option>
                 <option value="En 1 a 3 meses">En 1 a 3 meses</option>
@@ -599,12 +605,16 @@
           <div class="form-row">
             <div class="form-field">
               <label for="qf-message">Describe tu proyecto <span aria-hidden="true">*</span></label>
-              <textarea id="qf-message" name="message" rows="5" minlength="10" placeholder="Cuéntanos qué tienes en mente: ciudad donde está el proyecto, espacio, medidas aproximadas, estilo o material preferido…" required aria-describedby="qf-message-error"></textarea>
+              <textarea id="qf-message" name="Mensaje" rows="5" minlength="10" placeholder="Cuéntanos qué tienes en mente: ciudad donde está el proyecto, espacio, medidas aproximadas, estilo o material preferido…" required aria-describedby="qf-message-error"></textarea>
               <span class="form-error" id="qf-message-error" aria-live="polite"></span>
             </div>
           </div>
 
           <button class="btn btn--primary btn--block" type="submit">Enviar solicitud de cotización</button>
+
+          <div class="form-alert" id="form-error" role="alert" hidden>
+            <p><strong>No pudimos enviar tu solicitud.</strong> Revisa tu conexión e inténtalo de nuevo, o escríbenos por WhatsApp al <a href="https://wa.me/573007894561" target="_blank" rel="noopener">+57 300 789 4561</a>.</p>
+          </div>
 
           <div class="form-success" id="form-success" role="status" hidden>
             <p><strong>¡Gracias! Recibimos tu solicitud.</strong> Te contactaremos en un día hábil para agendar tu visita o videollamada gratuita.</p>

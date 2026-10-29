@@ -63,7 +63,7 @@ Luego abre <http://localhost:8080>.
 - [x] Usar fotos de proyectos propios en la galería y en "Sobre nosotros".
 - [ ] Cambiar la foto de portada (Unsplash) por una propia.
 - [ ] Reemplazar las reseñas de ejemplo por testimonios reales.
-- [ ] Conectar el formulario a un servicio de envío (por ejemplo Formspree, EmailJS o un backend propio); hoy solo valida y simula el envío.
+- [x] Formulario conectado a Web3Forms: las solicitudes llegan al correo registrado en web3forms.com.
 
 ## Despliegue
 

@@ -1,8 +1,7 @@
 /**
- * Quote form: client-side validation and a simulated submit.
+ * Quote form: client-side validation, then submit to Web3Forms (form action).
  */
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const SEND_DELAY_MS = 1000;
 
 /** Returns an error message for the field, or '' when valid. */
 function validateField(field) {
@@ -49,10 +48,18 @@ export function initQuoteForm() {
   if (!form) return;
 
   const fields = Array.from(form.querySelectorAll('input, select, textarea')).filter(
-    (el) => el.type !== 'submit' && el.type !== 'button' && el.type !== 'hidden'
+    (el) => el.type !== 'submit' && el.type !== 'button' && el.type !== 'hidden' && el.name !== 'botcheck'
   );
   const submitBtn = form.querySelector('[type="submit"]');
   const success = document.getElementById('form-success');
+  const failure = document.getElementById('form-error');
+
+  const showNotice = (el) => {
+    if (!el) return;
+    el.hidden = false;
+    if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+    el.focus();
+  };
 
   const check = (field) => {
     const message = validateField(field);
@@ -70,7 +77,7 @@ export function initQuoteForm() {
     field.addEventListener('change', live);
   });
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (submitBtn && submitBtn.disabled) return;
 
@@ -81,26 +88,39 @@ export function initQuoteForm() {
     }
 
     if (success) success.hidden = true;
+    if (failure) failure.hidden = true;
     if (submitBtn) {
       submitBtn.classList.add('is-loading');
       submitBtn.disabled = true;
       submitBtn.setAttribute('aria-busy', 'true');
     }
 
-    // Simulated network request.
-    window.setTimeout(() => {
-      if (submitBtn) {
-        submitBtn.classList.remove('is-loading');
-        submitBtn.disabled = false;
-        submitBtn.removeAttribute('aria-busy');
-      }
+    let sent = false;
+    try {
+      const data = Object.fromEntries(new FormData(form));
+      const res = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const json = await res.json().catch(() => ({}));
+      sent = res.ok && json.success !== false;
+    } catch {
+      sent = false;
+    }
+
+    if (submitBtn) {
+      submitBtn.classList.remove('is-loading');
+      submitBtn.disabled = false;
+      submitBtn.removeAttribute('aria-busy');
+    }
+
+    if (sent) {
       form.reset();
       fields.forEach((field) => setError(field, ''));
-      if (success) {
-        success.hidden = false;
-        if (!success.hasAttribute('tabindex')) success.setAttribute('tabindex', '-1');
-        success.focus();
-      }
-    }, SEND_DELAY_MS);
+      showNotice(success);
+    } else {
+      showNotice(failure);
+    }
   });
 }
