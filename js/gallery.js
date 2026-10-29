@@ -34,7 +34,13 @@ export function initGallery() {
   const btnClose = lightbox.querySelector('.lightbox__close');
   const btnPrev = lightbox.querySelector('.lightbox__prev');
   const btnNext = lightbox.querySelector('.lightbox__next');
+  const refLabel = lightbox.querySelector('.lightbox__ref');
+  const whatsapp = lightbox.querySelector('.lightbox__whatsapp');
+  const btnQuote = lightbox.querySelector('.lightbox__quote');
+  const whatsappBase = whatsapp ? whatsapp.href.split('?')[0] : '';
   if (!img) return;
+
+  let currentRef = '';
 
   let current = -1; // index into the currently visible items
   let opener = null;
@@ -53,6 +59,12 @@ export function initGallery() {
     img.src = (trigger && trigger.dataset.full) || (thumb && (thumb.currentSrc || thumb.src)) || '';
     img.alt = (thumb && thumb.alt) || text;
     if (caption) caption.textContent = text;
+    currentRef = item.dataset.ref || '';
+    if (refLabel) refLabel.textContent = currentRef ? `Ref. ${currentRef}` : '';
+    if (whatsapp && currentRef) {
+      const message = `Hola, me interesa cotizar un trabajo como la referencia ${currentRef} (${text}).`;
+      whatsapp.href = `${whatsappBase}?text=${encodeURIComponent(message)}`;
+    }
     const single = list.length < 2;
     if (btnPrev) btnPrev.hidden = single;
     if (btnNext) btnNext.hidden = single;
@@ -124,6 +136,20 @@ export function initGallery() {
     if (trigger) trigger.addEventListener('click', () => open(item, trigger));
   });
   if (btnClose) btnClose.addEventListener('click', close);
+
+  // Lleva la referencia al formulario de cotización.
+  if (btnQuote) {
+    btnQuote.addEventListener('click', () => {
+      const refField = document.getElementById('qf-ref');
+      const target = document.getElementById('quote-form');
+      opener = null; // no devolver el foco a la galería al cerrar
+      close();
+      if (refField) refField.value = currentRef;
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const next = document.getElementById('qf-name');
+      if (next) next.focus({ preventScroll: true });
+    });
+  }
   if (btnPrev) btnPrev.addEventListener('click', () => show(current - 1));
   if (btnNext) btnNext.addEventListener('click', () => show(current + 1));
 

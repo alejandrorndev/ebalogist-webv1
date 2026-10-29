@@ -367,6 +367,23 @@
   pointer-events: none;
 }
 
+/* Código de referencia para que el cliente lo cite al cotizar */
+.gallery__ref {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  z-index: 1;
+  padding: .25rem .6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .92);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--color-wood-dark);
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+}
+
 /* ==========================================================================
    5. Process (dark wood section)
    ========================================================================== */
@@ -975,8 +992,8 @@
 
 .lightbox__img {
   max-width: min(1200px, 100%);
-  max-height: calc(100vh - 11rem);
-  max-height: calc(100dvh - 11rem);
+  max-height: calc(100vh - 15rem);
+  max-height: calc(100dvh - 15rem);
   width: auto;
   height: auto;
   object-fit: contain;
@@ -989,6 +1006,25 @@
   font-size: var(--fs-sm);
   text-align: center;
   color: rgba(255, 255, 255, .85);
+}
+
+.lightbox__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  margin-top: 1rem;
+}
+
+.lightbox__ref {
+  padding: .35rem .8rem;
+  border: 1px solid rgba(255, 255, 255, .4);
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--color-white);
 }
 
 .lightbox__close,
