@@ -327,6 +327,13 @@ body.nav-open .nav-toggle__bar:nth-child(3) {
   max-width: 32ch;
 }
 
+.site-footer .footer__tagline {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--color-accent);
+}
+
 .site-footer ul {
   display: grid;
   gap: .55rem;
